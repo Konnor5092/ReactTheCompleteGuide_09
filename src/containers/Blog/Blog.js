@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 
 import "./Blog.css";
 import Posts from "./Posts/Posts";
-import NewPost from './NewPost/NewPost';
+import NewPost from "./NewPost/NewPost";
 
 class Blog extends Component {
     render() {
@@ -13,10 +13,28 @@ class Blog extends Component {
                     <nav>
                         <ul>
                             <li>
-                                <a href="/">Home</a>
+                                <NavLink
+                                    to="/"
+                                    exact
+                                    activeClassName="active"
+                                    activeStyle={{
+                                        color: "#fa923f",
+                                        textDecoration: "underline",
+                                    }}
+                                >
+                                    Home
+                                </NavLink>
                             </li>
                             <li>
-                                <a href="/new-post">New Post</a>
+                                <NavLink
+                                    to={{
+                                        pathname: "/new-post",
+                                        hash: "#submit",
+                                        search: "?quick-submit=true",
+                                    }}
+                                >
+                                    New Post
+                                </NavLink>
                             </li>
                         </ul>
                     </nav>
